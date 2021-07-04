@@ -15,18 +15,19 @@ function setup(){
     var canvas = createCanvas(1200,700);
     engine = Engine.create();
     world = engine.world;
+
+  
     Engine.run(engine);
 }
 
-function draw(){
-// add condition to check if any background image is there to add
+ async function draw(){
   if (backgroundImg)
       background(backgroundImg);
      
   Engine.update(engine);
-
-
+ 
 }
+  
 
 async function getBackgroundImg(){
 
@@ -35,50 +36,52 @@ async function getBackgroundImg(){
     var responseJSON = await response.json();
     var Time = responseJSON.datetime;
     var hour = Time.slice(11,13);
-
+    var hour2 = Time.slice(11,16);
+    text("TIME: " + hour2,30,50);
+  
 
     if (hour >= 24 && hour <= 02)
     {
         var bg = "sunrise1.png";
     }
 
-    else if (hour >= 02 && hour <= 04){
+    else if (hour > 02 && hour <= 04){
         var bg = "sunrise2.png";
     }
 
-    else if (hour >= 04 && hour <= 06){
+    else if (hour > 04 && hour <= 06){
         var bg = "sunrise3.png";
     }
 
-    else if (hour >= 06 && hour <= 08){
+    else if (hour > 06 && hour <= 08){
         var bg = "sunrise4.png";
     }
 
-    else if (hour >= 08 && hour <= 10){
+    else if (hour > 08 && hour <= 10){
         var bg = "sunrise5.png";
     }
 
-    else if (hour >= 10 && hour <= 12){
+    else if (hour > 10 && hour <= 13){
         var bg = "sunrise6.png";
     }
 
-    else if (hour >= 12 && hour <= 14){
+    else if (hour > 13 && hour <= 14){
         var bg = "sunset7.png";
     }
 
-    else if (hour >= 14 && hour <= 16){
+    else if (hour > 14 && hour <= 16){
         var bg = "sunset8.png";
     }
 
-    else if (hour >= 16 && hour <= 18){
+    else if (hour > 16 && hour <= 18){
         var bg = "sunset9.png";
     }
 
-    else if (hour >= 18 && hour <= 20){
+    else if (hour > 18 && hour <= 20){
         var bg = "sunset10.png";
     }
 
-    else if (hour >= 20 && hour <= 22){
+    else if (hour > 20 && hour <= 22){
         var bg = "sunset11.png";
     }
 
@@ -86,9 +89,7 @@ async function getBackgroundImg(){
         var bg = "sunset12.png";
     }
 
-
     backgroundImg = loadImage(bg);
+    
 }
-
-
 
